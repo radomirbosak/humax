@@ -2,6 +2,8 @@
 
 A python package and cli to interact with Humax router.
 
+## Usage
+
 ```console
 $ humax ip
 160.147.189.48
@@ -30,3 +32,7 @@ optional arguments:
                         Specify the section in config file to use. Defaults to
                         'DEFAULT'.
 ```
+
+## License
+
+This project is licensed under the terms of the MIT license.
