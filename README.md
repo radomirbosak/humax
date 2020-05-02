@@ -33,6 +33,19 @@ optional arguments:
                         'DEFAULT'.
 ```
 
+## Installation
+```
+$ pip3 install --user humax
+```
+
+### Dependencies
+Python packages `requests`, `pygments`, and `pyxdg`.
+
+## Uninstallation
+```
+$ pip3 uninstall humax
+```
+
 ## License
 
 This project is licensed under the terms of the MIT license.
