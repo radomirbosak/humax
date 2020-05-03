@@ -15,3 +15,6 @@ completions-install-bash:
 
 completions-install-fish:
 	cp completions/humax.fish ~/.config/fish/completions/
+
+local-reinstall:
+	pip3 install --upgrade --user --no-deps --force-reinstall .
