@@ -38,6 +38,17 @@ optional arguments:
 $ pip3 install --user humax
 ```
 
+## Shell completion
+Optionally, to install bash and fish completion run
+```
+$ make completions-install-bash
+```
+or
+```
+$ make completions-install-bash
+```
+respectively.
+
 ### Dependencies
 Python packages `requests`, `pygments`, and `pyxdg`.
 

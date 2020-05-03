@@ -9,3 +9,9 @@ pypi-upload-test:
 
 pypi-upload:
 	python3 -m twine upload dist/*
+
+completions-install-bash:
+	cp completions/humax /etc/bash_completion.d/ || echo "You may need to use sudo to copy to /etc/bash_completion.d"
+
+completions-install-fish:
+	cp completions/humax.fish ~/.config/fish/completions/
