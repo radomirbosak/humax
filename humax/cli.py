@@ -128,9 +128,9 @@ def main():
     url, user, password = config['url'], config['username'], config['password']
 
     h = Humax(url)
-    h.login(user, password)
 
     if args.action == 'post':
+        h.login(user, password)
         output = h.posttoken(args.method)
         colorprint(output)
     elif args.action == 'list-methods':
@@ -139,9 +139,11 @@ def main():
     elif args.action == 'get-config-path':
         print(CONFIG_PATH)
     elif args.action == 'ip':
+        h.login(user, password)
         output = h.posttoken(Basic.getStatus)
         print(output['wan_ip'])
     elif args.action == 'get-port-forwarding':
+        h.login(user, password)
         get_port_forwarding(h)
     else:
         print('No action specified')
