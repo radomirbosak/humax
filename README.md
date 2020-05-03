@@ -38,7 +38,7 @@ optional arguments:
 $ pip3 install --user humax
 ```
 
-## Shell completion
+### Shell completion
 Optionally, to install bash and fish completion run
 ```
 $ make completions-install-bash
