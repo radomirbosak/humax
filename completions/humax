@@ -1,0 +1,59 @@
+_humax () {
+    COMPREPLY=()
+    local IFS=$' \n'
+    local cur=$2 prev=$3
+    local firstword
+
+    local -a cmds all_opts
+
+    firstword=$(_humax_get_firstword)
+
+    cmds=(
+        post
+        list-methods
+        config-path
+        ip
+        get-port-forwarding
+    )
+
+    # Completions based on a specific previous word
+    case "$prev" in
+        post)
+            COMPREPLY=( $(compgen -W "$(humax list-methods)" -- "$cur") )
+            return 0
+            ;;
+        -r|--router)
+            COMPREPLY=( $(compgen -W "DEFAULT" -- "$cur") )
+            return 0
+            ;;
+    esac
+
+    # subcommand-specific completions
+    case "$firstword" in
+        post|list-methods|config-path|ip|get-port-forwarding)
+            COMPREPLY=( $(compgen -W "-h --help" -- "$cur") )
+            return 0
+            ;;
+        *)
+            all_opts=( -h --help -V --version -r --router "${cmds[@]}" )
+            COMPREPLY=( $(compgen -W "${all_opts[*]}" -- "$cur") )
+            return 0
+            ;;
+    esac
+}
+
+_humax_get_firstword() {
+    local firstword i
+
+    firstword=
+    for ((i = 1; i < ${#COMP_WORDS[@]}; ++i)); do
+        if [[ ${COMP_WORDS[i]} != -* ]]; then
+            firstword=${COMP_WORDS[i]}
+            break
+        fi
+    done
+
+    echo $firstword
+}
+
+complete -F _humax humax
